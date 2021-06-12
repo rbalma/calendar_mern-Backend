@@ -9,7 +9,7 @@ const crearUsuario = async(req, res) => {
     try {
         let user = await User.findOne({ email });
         if(user){
-            res.status(400).json({
+            return res.status(400).json({
                 ok: false,
                 msg: 'Un usuario existe con ese correo'
             });
@@ -99,7 +99,9 @@ const revalidarToken = async (req, res ) => {
 
     res.json({
         ok: true,
-        token
+        token,
+        uid,
+        name
     })
 }
 
